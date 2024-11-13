@@ -29,8 +29,8 @@ class ICard29FileCaching extends StatelessWidget {
     this.callback,
     this.date,
     this.dateStyle,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

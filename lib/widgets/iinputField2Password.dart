@@ -10,7 +10,7 @@ class IInputField2Password extends StatefulWidget {
   final Color? colorBackground;
 
   const IInputField2Password({
-    Key? key,
+    super.key,
     this.hint,
     this.icon,
     this.controller,
@@ -18,7 +18,7 @@ class IInputField2Password extends StatefulWidget {
     this.colorDefaultText,
     this.colorBackground,
     this.onChangeText,
-  }) : super(key: key);
+  });
 
   @override
   _IInputField2PasswordState createState() => _IInputField2PasswordState();

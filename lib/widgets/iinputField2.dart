@@ -13,7 +13,7 @@ class IInputField2 extends StatefulWidget {
   final Color? colorBackground;
 
   const IInputField2({
-    Key? key,
+    super.key,
     this.hint,
     this.icon,
     this.controller,
@@ -23,7 +23,7 @@ class IInputField2 extends StatefulWidget {
     this.iconRight,
     this.onPressRightIcon,
     this.onChangeText,
-  }) : super(key: key);
+  });
 
   @override
   _IInputField2State createState() => _IInputField2State();

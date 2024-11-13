@@ -8,13 +8,13 @@ class IList4 extends StatelessWidget {
   final Function? press;
 
   const IList4({
-    Key? key,
+    super.key,
     this.text = "",
     this.textStyle,
     this.text2 = "",
     this.textStyle2,
     this.press,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

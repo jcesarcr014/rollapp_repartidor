@@ -4,7 +4,7 @@ class IInkWell extends StatelessWidget {
   final Function()? onPress;
   final Widget child;
 
-  const IInkWell({Key? key, required this.onPress, required this.child}) : super(key: key);
+  const IInkWell({super.key, required this.onPress, required this.child});
 
   @override
   Widget build(BuildContext context) {

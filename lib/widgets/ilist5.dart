@@ -11,7 +11,7 @@ class IList5 extends StatefulWidget {
   final Color? inactiveTrackColor;
 
   const IList5({
-    Key? key,
+    super.key,
     this.text = "",
     this.icon,
     this.textStyle,
@@ -20,7 +20,7 @@ class IList5 extends StatefulWidget {
     this.initState = true,
     this.activeColor,
     this.inactiveTrackColor,
-  }) : super(key: key);
+  });
 
   @override
   _IList5State createState() => _IList5State();

@@ -1,3 +1,4 @@
+/*
 import 'package:delivery_template/providers/chat_provider.dart';
 import 'package:delivery_template/ui/main/chatDetailPage.dart';
 import 'package:flutter/material.dart';
@@ -96,3 +97,4 @@ class _ConversationListState extends State<ConversationList> {
     );
   }
 }
+*/

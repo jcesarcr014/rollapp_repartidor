@@ -16,7 +16,7 @@ class _TimerCountDownState extends State<TimerCountDown> {
   String strDigits(int n) => n.toString().padLeft(2, '0');
 
   void setCountDown() {
-    final reduceSecondsBy = 1;
+    const reduceSecondsBy = 1;
     setState(() {
       final seconds = widget.myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {

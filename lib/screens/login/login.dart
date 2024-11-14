@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:rollapp_repartidor/main.dart';
+import 'package:rollapp_repartidor/models/usuario.dart';
+import 'package:rollapp_repartidor/providers/ubicacion.dart';
+import 'package:rollapp_repartidor/providers/usuario.dart';
 import 'package:rollapp_repartidor/widgets/ibackground4.dart';
 import 'package:rollapp_repartidor/widgets/ibox.dart';
 import 'package:rollapp_repartidor/widgets/ibutton.dart';
 import 'package:rollapp_repartidor/widgets/iinputField2.dart';
 import 'package:rollapp_repartidor/widgets/iinputField2Password.dart';
+import 'package:rollapp_repartidor/widgets/mostrar_alerta.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,19 +22,50 @@ class _LoginScreenState extends State<LoginScreen> {
   var windowWidth;
   var windowHeight;
 
+  bool isLoading = false;
+
   final editControllerName = TextEditingController();
   final editControllerPassword = TextEditingController();
+
+  final usuarioProvider = UsuarioProvider();
+  final ubicacionProvider = UbicacionProvider();
+  Position? position;
 
   @override
   void initState() {
     super.initState();
+    loadData();
   }
+
+  void loadData() async => position = await ubicacionProvider.getCurrentPosition();
 
   @override
   void dispose() {
     editControllerName.dispose();
     editControllerPassword.dispose();
     super.dispose();
+  }
+
+  void login() {
+    if(editControllerName.text.trim().isEmpty || editControllerPassword.text.trim().isEmpty || position == null) return;
+    isLoading = true;
+    setState(() {});
+
+    Usuario usuario = Usuario();
+    usuario.correo = editControllerName.text;
+    usuario.latActual = position!.latitude.toString();
+    usuario.lngActcual = position!.longitude.toString();
+
+    usuarioProvider.login(usuario, editControllerPassword.text).then((value) {
+      isLoading = false;
+      setState(() {});
+      if(value.estatus != 1) {
+        mostrarAlerta(context, 'Error', value.mensaje!);
+        return;
+      }
+
+      mostrarAlerta(context, 'Exito', value.mensaje!);
+    },);
   }
 
   @override
@@ -46,7 +82,17 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Container(
               margin: EdgeInsets.fromLTRB(20, 0, 20, windowHeight * 0.1),
               width: windowWidth,
-              child: _body(),
+              child: isLoading ? 
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Espere...'),
+                      SizedBox(height: windowHeight * 0.01),
+                      const CircularProgressIndicator(),
+                    ]
+                  ),
+                ) : _body(),
             ),
           ),
         ],
@@ -69,9 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         IBox(
             color: theme.colorBackgroundDialog,
-            press: () {
-
-            },
+            press: () {},
             child: Column(
               children: <Widget>[
                 const SizedBox(
@@ -106,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
                   child: IButton(
-                    pressButton: () {},
+                    pressButton: login,
                     text: "Iniciar Sesión",
                     color: theme.colorPrimary,
                     textStyle: theme.text16boldWhite,

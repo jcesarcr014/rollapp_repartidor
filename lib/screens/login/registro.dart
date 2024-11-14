@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rollapp_repartidor/main.dart';
+import 'package:rollapp_repartidor/providers/usuario.dart';
 import 'package:rollapp_repartidor/widgets/iappBar.dart';
 import 'package:rollapp_repartidor/widgets/ibackground4.dart';
 import 'package:rollapp_repartidor/widgets/ibox.dart';
 import 'package:rollapp_repartidor/widgets/ibutton.dart';
 import 'package:rollapp_repartidor/widgets/iinputField2.dart';
 import 'package:rollapp_repartidor/widgets/iinputField2Password.dart';
+import 'package:rollapp_repartidor/widgets/mostrar_alerta.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CreateAccountScreen extends StatefulWidget {
@@ -28,21 +30,37 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
   final editControllerPassword1 = TextEditingController();
   final editControllerPassword2 = TextEditingController();
 
+  final usuarioProvider = UsuarioProvider();
+
   _pressCreateAccountButton() {
+    if(
+      editControllerName.text.trim().isEmpty || editControllerEmail.text.trim().isEmpty || 
+      editControllerPassword1.text.trim().isEmpty || editControllerCelular.text.trim().isEmpty
+    ) return;
     if (editControllerPassword1.text == editControllerPassword2.text) {
       setState(() {
         isLoading = true;
       });
+
+      usuarioProvider.registro(
+        name: editControllerName.text, email: editControllerEmail.text, 
+        password: editControllerPassword1.text, phone: editControllerCelular.text
+      ).then((value) {
+        if(value.estatus == 1) {
+          Navigator.pushNamedAndRemoveUntil(context, 'login', (rooute) => false);
+        } else {
+          mostrarAlerta(context, 'Error', value.mensaje!);
+        }
+      },);
     } else {
       const _titulo = 'ERROR';
       const _mensaje = 'El password no coincide';
-      //mostrarAlerta(context, _titulo, _mensaje);
+      mostrarAlerta(context, _titulo, _mensaje);
     }
   }
 
   _errorAceptar() {
-    //mostrarAlerta(
-      //  context, "ERROR", "Debes leer y aceptar los términos y condiciones");
+    mostrarAlerta(context, "ERROR", "Debes leer y aceptar los términos y condiciones");
   }
 
   @override
@@ -196,7 +214,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
                         activeColor: theme.colorPrimary,
                         value: isChecked,
                         onChanged: (value) {
-                          
+                          isChecked = value!;
+                          setState(() {});
                         },
                       ),
                     const SizedBox(
@@ -245,7 +264,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
                       activeColor: theme.colorPrimary,
                       value: isChecked2,
                       onChanged: (value) {
-                        
+                        isChecked2 = value!;
+                        setState(() {});
                       },
                       ),
                     const SizedBox(

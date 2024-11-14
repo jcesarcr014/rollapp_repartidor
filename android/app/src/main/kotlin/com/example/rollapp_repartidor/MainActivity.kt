@@ -1,4 +1,4 @@
-package com.example.rollapp_repartidor
+package com.rollapprepartidor
 
 import io.flutter.embedding.android.FlutterActivity
 

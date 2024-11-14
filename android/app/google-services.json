@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "910867730796",
+    "project_id": "rollapp-negocio-v2",
+    "storage_bucket": "rollapp-negocio-v2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910867730796:android:a40d814b2f99b339662349",
+        "android_client_info": {
+          "package_name": "com.rollapnegocio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBogEg5vyw47E_SNOHCm8IoyhJYkz1EzJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910867730796:android:0a77bc8edc57398b662349",
+        "android_client_info": {
+          "package_name": "com.rollapnegociocom.rollapnegocio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBogEg5vyw47E_SNOHCm8IoyhJYkz1EzJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910867730796:android:493a4bc114c36c4d662349",
+        "android_client_info": {
+          "package_name": "com.rollappcliente"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBogEg5vyw47E_SNOHCm8IoyhJYkz1EzJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910867730796:android:a17a694d0ed4f3aa662349",
+        "android_client_info": {
+          "package_name": "com.rollapprepartidor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBogEg5vyw47E_SNOHCm8IoyhJYkz1EzJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

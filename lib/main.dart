@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rollapp_repartidor/config/theme.dart';
 import 'package:rollapp_repartidor/router/app_routes.dart';
 
 AppThemeData theme = AppThemeData();
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   theme.init();
   runApp(const MyApp());
 }

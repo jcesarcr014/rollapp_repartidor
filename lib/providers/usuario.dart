@@ -45,7 +45,8 @@ class UsuarioProvider {
         'email': user.correo,
         'password': pass,
         'lat': user.latActual,
-        'long': user.lngActcual
+        'long': user.lngActcual,
+        'token_firebase': tokenFCM
       });
 
       final decodedData = json.decode(resp.body);

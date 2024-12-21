@@ -105,6 +105,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'RollApp Repartidor',
       theme: _theme,
+      navigatorKey: navigatorKey,
       initialRoute: AppRoutes.initialRoute,
       routes: AppRoutes.routes,
     );

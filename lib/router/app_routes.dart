@@ -4,6 +4,7 @@ import 'package:rollapp_repartidor/screens/login/login.dart';
 import 'package:rollapp_repartidor/screens/login/registro.dart';
 import 'package:rollapp_repartidor/screens/splash/splash.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class AppRoutes {
   static const initialRoute = 'splash';
 

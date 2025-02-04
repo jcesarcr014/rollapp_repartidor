@@ -49,13 +49,15 @@ class UsuarioProvider {
         'token_firebase': tokenFCM
       });
 
-      final decodedData = json.decode(resp.body);
+      final decodedData = await json.decode(resp.body);
       if(decodedData['estatus'] != 1) {
         respuesta.estatus = 0;
         respuesta.mensaje = decodedData['msg'];
       } else {
         respuesta.estatus = 1;
         respuesta.mensaje = decodedData['msg'];
+        usuarioSesion.token = decodedData['token'];
+        usuarioSesion.id = decodedData['usuario']['id'];
       }
     } on SocketException {
       respuesta.estatus = 0;

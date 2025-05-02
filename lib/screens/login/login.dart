@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return;
       }
 
-      mostrarAlerta(context, 'Exito', value.mensaje!);
+      Navigator.pushReplacementNamed(context, 'orders');
     },);
   }
 
